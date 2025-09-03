@@ -81,5 +81,46 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 5. Add error handling to your functions that will log an error message using console.error() if any object doesn't have a "name" property. Display any error messages in the div with id "error-messages"
+function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
+  const listElement = document.getElementById(listId);
+  const errorDiv = document.getElementById(errorDivId);
+  listElement.innerHTML = '';
+  errorDiv.innerHTML = '';
+
+  namesList.forEach(user => {
+    if (!user.name) {
+      const errorMessage = `Error: Missing name property for user with id ${user.id}`;
+      console.error(errorMessage); // Log error to console
+      const errorP = document.createElement('p');
+      errorP.textContent = errorMessage;
+      errorDiv.appendChild(errorP); // Display error message in the error messages div
+    } else {
+      console.log(user.name); // Print names to console
+      const li = document.createElement('li');
+      li.textContent = user.name; // Print names to HTML page
+      listElement.appendChild(li); // Append list item to the specified list
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("----------Exercise 5: (error handling function)----------");
+
+  renderNamesListWithErrorHandling(users, "error-handling-list", "error-messages");
+});
 
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
+const brokenUsers = [
+  { id: 1, age: 23 }, // Missing name property
+  { id: 2, name: "Michael Jordan", age: 50 },
+  { id: 3, age: 33 }, // Missing name property
+  { id: 4, name: "Kobe Bryant", age: 40 },
+  { id: 5 }, // Missing name and age properties
+  { id: 6, name: "LeBron James", age: 36 },
+];  // Intentionally broken array
+
+document.addEventListener('DOMContentLoaded', () => { 
+  console.log("----------Exercise 6: (broken array test)----------");
+  
+  renderNamesListWithErrorHandling(brokenUsers, "broken-array-list", "broken-array-errors");
+});
