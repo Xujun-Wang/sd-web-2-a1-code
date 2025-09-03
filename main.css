@@ -123,7 +123,7 @@ ul li:last-child {
   font-size: 0.9rem;
 }
 
-/* added css for #error-messages p and #broken-array-errors p*/
+/* added css for #error-messages p and #broken-array-errors p */
 #error-messages p, 
 #broken-array-errors p{ 
   color: #721c24;
@@ -131,7 +131,7 @@ ul li:last-child {
 
 /* Empty state styles */
 .empty-list {
-  color: #6c757d;
+  color: black; /* Changed from lightgray to black for better visibility */
   font-style: italic;
   text-align: center;
   padding: 1rem;
