@@ -62,6 +62,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 4. Create a function that takes an array and an age threshold parameter. The function should only display characters whose age is below the given number. Render results in the list with id "age-filter-list"
+function renderFilteredNamesList(namesList, ageThreshold, listId) {
+  const listElement = document.getElementById(listId);
+  namesList.forEach(user => {
+    if (user.age < ageThreshold) { // Filter for age below the threshold
+      console.log(user.name); // Print names to console 
+      const li = document.createElement('li');
+      li.textContent = user.name; // Print names to HTML page
+      listElement.appendChild(li); // Append list item to the age-filtered list
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("----------Exercise 4: (<100 yo in a reusable function)----------");
+
+  renderFilteredNamesList(users, 100, "age-filter-list"); // Example usage with age threshold of 100
+});
 
 // 5. Add error handling to your functions that will log an error message using console.error() if any object doesn't have a "name" property. Display any error messages in the div with id "error-messages"
 
