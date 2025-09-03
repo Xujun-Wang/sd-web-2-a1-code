@@ -131,10 +131,10 @@ function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
   // If no errors, hide the error div and show a message indicating no errors found
   if (!hasErrors) {
     errorDiv.style.display = "none"; // Hide error div if no errors
-    const emptyMessage = document.createElement("p");
-    emptyMessage.className = "empty-list";
-    emptyMessage.textContent = `No errors found. All users have names.`;
-    listElement.appendChild(emptyMessage);
+    const successMessage = document.createElement("p");
+    successMessage.className = "success";
+    successMessage.textContent = `No errors found. All users have names.`;
+    listElement.appendChild(successMessage);
   } else {
     errorDiv.style.display = "block"; // Show error div if there are errors
   }
