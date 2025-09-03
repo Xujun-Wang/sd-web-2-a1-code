@@ -15,6 +15,15 @@ const users = [
 ];
 
 // broken test data for exercise 6
+// sample data with some objects missing the "name" property
+const brokenUsers = [
+  { id: 1, age: 23 }, 
+  { id: 2, name: "Michael Jordan", age: 56 },
+  { id: 3, age: 33 }, 
+  { id: 4, name: "Kobe Bryant", age: 38 },
+  { id: 5 }, 
+  { id: 6, name: "LeBron James", age: 42 },
+];
 
 // 1. Print out the names of each character in the console, then render them in the HTML list with id "names-list"
 document.addEventListener('DOMContentLoaded', () => {
@@ -110,14 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
-const brokenUsers = [
-  { id: 1, age: 23 }, // Missing name property
-  { id: 2, name: "Michael Jordan", age: 50 },
-  { id: 3, age: 33 }, // Missing name property
-  { id: 4, name: "Kobe Bryant", age: 40 },
-  { id: 5 }, // Missing name and age properties
-  { id: 6, name: "LeBron James", age: 36 },
-];  // Intentionally broken array
 
 document.addEventListener('DOMContentLoaded', () => { 
   console.log("----------Exercise 6: (broken array test)----------");
