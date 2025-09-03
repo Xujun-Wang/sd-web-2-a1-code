@@ -104,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
   const listElement = document.getElementById(listId);
   const errorDiv = document.getElementById(errorDivId);
-  listElement.innerHTML = '';
-  errorDiv.innerHTML = '';
+  let hasErrors = false;
 
   namesList.forEach(user => {
     if (!user.name) {
@@ -114,6 +113,7 @@ function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
       const errorP = document.createElement('p');
       errorP.textContent = errorMessage;
       errorDiv.appendChild(errorP); // Display error message in the error messages div
+      hasErrors = true;
     } else {
       console.log(user.name); // Print names to console
       const li = document.createElement('li');
@@ -121,6 +121,13 @@ function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
       listElement.appendChild(li); // Append list item to the specified list
     }
   });
+
+  if (!hasErrors) {
+    errorDiv.style.display = 'none'; // Hide error div if no errors
+  }
+  else {
+    errorDiv.style.display = 'block'; // Show error div if there are errors
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
