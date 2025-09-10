@@ -25,16 +25,21 @@ const brokenUsers = [
   { id: 6, name: "LeBron James", age: 42 },
 ];
 
+// Print out feasible names and log info for DRY purposes. Takes a user object and a list element to append to, not a name array.
+function appendNameToList(user, listElement) {
+  console.log(user.name); // Print names to console
+  const li = document.createElement("li");
+  li.textContent = user.name; // Print names to HTML page
+  listElement.appendChild(li); // Append list item to the names list
+}
+
 // 1. Print out the names of each character in the console, then render them in the HTML list with id "names-list"
 document.addEventListener("DOMContentLoaded", () => {
   console.log("----------Exercise 1: (every name)----------");
 
   const namesList = document.getElementById("names-list");
   users.forEach((user) => {
-    console.log(user.name); // Print names to console
-    const li = document.createElement("li");
-    li.textContent = user.name; // Print names to HTML page
-    namesList.appendChild(li); // Append list item to the names list
+    appendNameToList(user, namesList);
   });
 });
 
@@ -45,11 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const youngCharactersList = document.getElementById("young-characters-list");
   users.forEach((user) => {
     if (user.age < 40) {
-      // Filter for age less than 40
-      console.log(user.name); // print names to console
-      const li = document.createElement("li");
-      li.textContent = user.name; // Print names to HTML page
-      youngCharactersList.appendChild(li); // Append list item to the young characters list
+      appendNameToList(user, youngCharactersList);
     }
   });
 });
@@ -58,10 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderNamesList(namesList, listId) {
   const listElement = document.getElementById(listId);
   namesList.forEach((user) => {
-    console.log(user.name); // Print names to console
-    const li = document.createElement("li");
-    li.textContent = user.name; // Print names to HTML page
-    listElement.appendChild(li); // Append list item to the function-generated list
+    appendNameToList(user, listElement);
   });
 }
 
@@ -81,11 +79,8 @@ function renderFilteredNamesList(namesList, ageThreshold, listId) {
   namesList.forEach((user) => {
     if (user.age < ageThreshold) {
       // Filter for age below the threshold
-      console.log(user.name); // Print names to console
-      const li = document.createElement("li");
-      li.textContent = user.name; // Print names to HTML page
-      listElement.appendChild(li); // Append list item to the age-filtered list
-      hasResults = true;
+      appendNameToList(user, listElement);
+      hasResults = true; // Set flag to true
     }
   });
 
@@ -93,7 +88,7 @@ function renderFilteredNamesList(namesList, ageThreshold, listId) {
   if (!hasResults) {
     const emptyMessage = document.createElement("p");
     emptyMessage.className = "empty-list";
-    emptyMessage.textContent = `No characters found under age ${ageThreshold}`;
+    emptyMessage.textContent = `No characters found under age: ${ageThreshold}`;
     listElement.appendChild(emptyMessage);
   }
 }
@@ -121,10 +116,7 @@ function renderNamesListWithErrorHandling(namesList, listId, errorDivId) {
       errorDiv.appendChild(errorP); // Display error message in the error messages div
       hasErrors = true;
     } else {
-      console.log(user.name); // Print names to console
-      const li = document.createElement("li");
-      li.textContent = user.name; // Print names to HTML page
-      listElement.appendChild(li); // Append list item to the specified list
+      appendNameToList(user, listElement);
     }
   });
 
