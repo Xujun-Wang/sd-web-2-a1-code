@@ -21,7 +21,7 @@ This is a summary of the main tasks you need to complete.
 - [ ] **Part 3: Submission**
   - [x] Make at least two meaningful Git commits and push them to GitHub.
   - [x] Deploy your fixed website using GitHub Pages.
-  - [ ] Submit your repository and live GitHub Pages links to Brightspace.
+  - [x] Submit your repository and live GitHub Pages links to Brightspace.
 
 ---
 
